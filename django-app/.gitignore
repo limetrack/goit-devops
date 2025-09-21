@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+
+# Django
+/staticfiles/
+/media/
+
+# Virtual env (якщо раптом створювали локально)
+.venv/
+env/
+venv/
+
+# VSCode / IDE
+.vscode/
+.idea/
+*.swp
+
+# MacOS
+.DS_Store
+
+# Docker
+pgdata/
+*.pid
+
+# Environment
+.env
