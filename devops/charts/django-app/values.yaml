@@ -1,0 +1,32 @@
+image:
+  repository: "986397386508.dkr.ecr.eu-north-1.amazonaws.com/app"
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8000
+
+replicaCount: 2
+
+ingress:
+  enabled: false
+
+hpa:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+env:
+  DJANGO_SETTINGS_MODULE: "app.settings"
+  DEBUG: "false"
+  ALLOWED_HOSTS: "*"
+  DJANGO_DEBUG: 1
+  DJANGO_SECRET_KEY: "dev-secret-key"
+  POSTGRES_DB: "postgres"
+  POSTGRES_USER: "postgres"
+  POSTGRES_PASSWORD: "postgres"
+  POSTGRES_PORT: 5432
+  POSTGRES_HOST: db
