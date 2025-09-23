@@ -1,0 +1,62 @@
+# AWS Configuration
+region              = "eu-north-1"
+# backend_bucket_name = "your-unique-tfstate-bucket-name"
+
+# VPC Configuration
+vpc_cidr_block     = "10.0.0.0/16"
+public_subnets     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+private_subnets    = ["10.0.4.0/24", "10.0.5.0/24", "10.0.6.0/24"]
+availability_zones = ["eu-north-1a", "eu-north-1b", "eu-north-1c"]
+create_nat_per_az  = false
+
+# Resource Names
+vpc_name     = "my-vpc"
+ecr_name     = "my-ecr-repo"
+scan_on_push = true
+
+# EKS Configuration
+cluster_name  = "my-eks-cluster"
+instance_type = "t3.medium"
+
+# RDS Configuration
+rds_name                     = "my-app-db"
+rds_use_aurora               = false
+rds_aurora_instance_count    = 2
+rds_engine                   = "postgres"
+rds_engine_version           = "17.2"
+rds_parameter_group_family   = "postgres17"
+rds_engine_cluster           = "aurora-postgresql"
+rds_engine_version_cluster   = "15.3"
+rds_parameter_group_family_aurora = "aurora-postgresql15"
+rds_instance_class           = "db.t3.medium"
+rds_allocated_storage        = 20
+rds_db_name                  = "myapp"
+rds_username                 = "postgres"
+rds_password                 = "your-secure-password"
+rds_publicly_accessible      = false  # Set to true for development
+rds_multi_az                 = true
+rds_backup_retention_period  = 7
+rds_parameters = {
+  max_connections              = "200"
+  log_min_duration_statement   = "500"
+}
+rds_tags = {
+  Environment = "dev"
+  Project     = "myapp"
+}
+
+# Tags
+tags = {
+  Project     = "my-project"
+  Owner       = "Your Name"
+  Environment = "dev"
+}
+
+# GitHub Configuration
+github_repo_url = "https://github.com/your-username/your-repo.git"
+github_user     = "your-github-username"
+github_pat      = "ghp_your_github_personal_access_token"
+
+# Monitoring Configuration
+monitoring_namespace     = "monitoring"
+monitoring_chart_version = "55.5.0"
